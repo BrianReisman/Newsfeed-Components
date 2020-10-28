@@ -86,6 +86,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Brian is a rubber duckie',
+    date: new Date(),
+    firstParagraph: 'test' ,
+    secondParagraph: 'this' ,
+    thirdParagraph: 'out!'
   }
 ];
 
@@ -146,7 +153,7 @@ function articleMaker(artObj){
   // Step 3: Don't forget to return something from your function!
   return container
 }
-console.log(articleMaker(data[0]));
+// console.log(articleMaker(data[0]));
 
   // Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   // to create a div.article element and append it to the DOM inside div.articles (see index.html).
@@ -159,4 +166,4 @@ console.log(articleMaker(data[0]));
   // Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   // Refresh the page to see the new article.
 
-  console.log(data.length)
+  // console.log(data.length)
