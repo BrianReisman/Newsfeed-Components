@@ -95,7 +95,15 @@ const data = [
   // and returns a DOM node looking like the one below:
 
 function articleMaker(artObj){
-
+//create each element that I want and assigned classes where applicable
+        // <div class="article">
+        //   <h2>{title of the article}</h2>
+        //   <p class="date">{date of the article}</p>
+        //   <p></p>
+        //   <p></p>
+        //   <p></p>
+        //   <span class="expandButton">+</span>
+        // </div>
   const container = document.createElement('div')
   container.classList = "article"
 
@@ -116,40 +124,39 @@ function articleMaker(artObj){
   para3.textContent = artObj.thirdParagraph
   
   const span = document.createElement('span')
+  span.textContent = 'x'
   span.classList = 'expandButton'
+  // console.log(container)
 
-  // console.log(para3)
-  // console.log(artObj.title)
-  // console.log(artObj.date)
-  // console.log(artObj.firstParagraph)
-  // console.log(artObj.secondParagraph)
-  // console.log(artObj.thirdParagraph)
-}
-articleMaker(data[0]);
-
-
-  // <div class="article">
-  //   <h2>{title of the article}</h2>
-  //   <p class="date">{date of the article}</p>
-
-  //   {three separate paragraph elements}
-
-  //   <span class="expandButton">+</span>
-  // </div>
-
-
-
-
-
-
+//wire up the elements to eachother
+  container.appendChild(hTwo)
+  // hTwo.nextElementSibling(data)
+  container.appendChild(date)
+  container.appendChild(para1)
+  container.appendChild(para2)
+  container.appendChild(para3)
+  container.appendChild(span)
 
   // Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   // This listener should toggle the class 'article-open' on div.article.
+  span.addEventListener('click', (when) => { //on the span element, wire it up with a listener, listening for a click. When that happens(click)
+    container.classList.toggle('article-open') //I want the div I created above and called container to have it's class list toggled with the 'article-open' class
+  })
 
   // Step 3: Don't forget to return something from your function!
+  return container
+}
+console.log(articleMaker(data[0]));
 
   // Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   // to create a div.article element and append it to the DOM inside div.articles (see index.html).
+  data.forEach((thing) => { //taking the data array with a foorEach loop, for each things/item I want...
+    let iMadeAThing = articleMaker(thing) //each to be passed into the articleMaker function
+    document.body.appendChild(iMadeAThing)
+  })
+
 
   // Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   // Refresh the page to see the new article.
+
+  console.log(data.length)
