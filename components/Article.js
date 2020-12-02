@@ -86,11 +86,65 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Brian\'s Addition',
+    date: '',
+    firstParagraph: ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, atque labore. Veniam sit ut animi esse similique sequi dicta facere, illum placeat vel aliquid molestiae nam. Alias consequuntur architecto quis cum reprehenderit eius necessitatibus earum perspiciatis, quaerat exercitationem, ad aliquid suscipit voluptate amet nesciunt voluptates magnam eaque deserunt officiis veniam incidunt ea nam molestiae. Nesciunt. `,
+
+    secondParagraph: ` Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam nisi dignissimos dicta. `,
+
+    thirdParagraph: ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore sed sunt quisquam nulla, officia vel tempore, ipsum ea officiis harum soluta magnam amet ducimus asperiores fugiat dolore commodi dignissimos, quas in accusamus? Est, deleniti deserunt. Eveniet reiciendis minima dignissimos sunt molestias ex modi tempora, minus sequi animi officia assumenda odio ipsam sint dicta vel ducimus officiis. Nulla nobis, error quos in placeat nostrum autem illo temporibus iste rem excepturi debitis minus porro totam eum obcaecati blanditiis ratione asperiores maiores! Tempore commodi suscipit, unde, quibusdam reiciendis placeat omnis pariatur corporis ipsa in quasi quam dignissimos inventore. Reiciendis distinctio deserunt sint.`
   }
 ];
 
+function articleMaker(articleObject){
+  const articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+
+  const h2 = document.createElement('h2');
+  h2.textContent = articleObject.title;
+
+  const date = document.createElement('p');
+  date.classList.add('date');
+
+  const paragraph1 = document.createElement('p');
+  paragraph1.textContent = articleObject.firstParagraph;
+  const paragraph2 = document.createElement('p');
+  paragraph2.textContent = articleObject.secondParagraph;
+  const paragraph3 = document.createElement('p');
+  paragraph3.textContent = articleObject.thirdParagraph;
+
+  const span = document.createElement('span');
+  span.classList.add('expandButton');
+  span.textContent = '+';
+  span.addEventListener('click', ()=>{
+    articleDiv.classList.toggle('article-open')
+  })
+
+  //appending
+  articleDiv.appendChild(h2);
+  articleDiv.appendChild(date);
+  articleDiv.appendChild(paragraph1);
+  articleDiv.appendChild(paragraph2);
+  articleDiv.appendChild(paragraph3);
+  articleDiv.appendChild(span);
+
+  return(
+    articleDiv
+  );
+}
+const injectionPoint = document.querySelector('div.articles');
+// console.log(injectionPoint);
+
+data.forEach((article, i) => {
+  const onDeckToAdd = articleMaker(data[i]);
+  injectionPoint.appendChild(onDeckToAdd);
+})
+
+
 /*
-  Step 1: Write a component called 'articleMaker' to create an article.
+Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
 
