@@ -135,7 +135,7 @@ function articleMaker(articleObject){
   );
 }
 const injectionPoint = document.querySelector('div.articles');
-console.log(injectionPoint);
+// console.log(injectionPoint);
 
 data.forEach((article, i) => {
   const onDeckToAdd = articleMaker(data[i]);
